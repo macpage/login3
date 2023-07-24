@@ -1,11 +1,20 @@
+import { useState } from "react";
+
+import axios, { Axios } from "axios";
+
 function Login(){
+    const [username,setUsername] = useState();
+    const [password,setpassword] = useState();
+    function handleSubmit(){
+        axios.post("http://localhost:3001/addUsers", "digga","scheiss drauf")
+    }
     return <div id="login">
-        <form action="">
-        <label htmlFor="">Username</label>
-         <input type="text"/>   
-         <label htmlFor="">Password</label>
-         <input type="password" />
-         <button >Login</button>
+        <form onSubmit={handleSubmit}>
+        <label htmlFor="username"><p>Username</p><input type="text" name="username" onChange={e => setUsername(e.target.value)}/>  </label>
+          
+         <label htmlFor="password"><p>Password</p><input type="password" name="password" onChange={e => setpassword(e.target.value)} /></label>
+         
+         <button type="submit" >Login</button>
         </form>
         <a href="">Register</a>
         

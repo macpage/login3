@@ -8,20 +8,23 @@ function App() {
 
   useEffect(()=>{
     async function getUsers(){
-      const response = await fetch("http://localhost:3001/api");
+      const response = await fetch("http://localhost:3001/getUsers");
       const users = await response.json();
-      setUser(users.users);
-      console.log(users.users)
+      setUser(users);
+      console.log(users)
     }
   getUsers();  
   },[])
 
-  return <div>
+  return <>
 
-  <Login></Login>
- 
+  <Login>
+   
+  </Login>
+  
+  { user ? user.map((item,index)=> <p key={index}>{item.name}</p>) : null} 
      
-  </div>
+  </>
   
   
 }
