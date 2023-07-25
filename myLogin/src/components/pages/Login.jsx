@@ -1,13 +1,17 @@
 import { useState } from "react";
 
-import axios, { Axios } from "axios";
+import axios from "axios";
 
 function Login(){
-    const [username,setUsername] = useState();
-    const [password,setpassword] = useState();
-    function handleSubmit(){
-        axios.post("http://localhost:3001/addUsers", "digga","scheiss drauf")
-    }
+    const [username,setUsername] = useState("yolo");
+    const [password,setpassword] = useState("lol");
+     const handleSubmit=(e) =>{
+      
+         axios.post("http://localhost:3001/addUsers", {username,password}).then(result=>console.log(result))
+        console.log(" bro")
+     }
+       
+    
     return <div id="login">
         <form onSubmit={handleSubmit}>
         <label htmlFor="username"><p>Username</p><input type="text" name="username" onChange={e => setUsername(e.target.value)}/>  </label>
